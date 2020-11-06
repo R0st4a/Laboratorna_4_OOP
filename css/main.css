@@ -1,3 +1,11 @@
 body{
     background-color: rgb(78, 114, 111);
 }
+
+h1{
+    color: black;
+}
+
+p{
+    color: chartreuse;
+}
