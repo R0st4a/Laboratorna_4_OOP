@@ -9,6 +9,6 @@ How to run the project
    Потім врочну прописуєм шлях.
 4. pyenv install 3.8.2
 5. pyenv local 3.8.2 (шлях в Директорію)
-6. pip install poetry power shell
+6. pip install poetry (power shell)
 7. poetry shell
 8. python __init__.py
