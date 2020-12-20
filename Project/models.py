@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, ARRAY
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from werkzeug.security import generate_password_hash
 
 engine = create_engine("postgresql://postgres:29.03.2002@localhost/lab", echo = True)
 
@@ -14,8 +15,14 @@ class User (Base):
     id = Column('id', Integer, primary_key = True)
     name = Column('name', String)
     email = Column('email', String, unique = True)
-    password = Column('password', String)
     status = Column('status', String)
+    password = Column('password', String)
+    
+    def __init__(self, name, email, status, password):
+        self.name = name
+        self.email = email
+        self.status = status
+        self.password = generate_password_hash(password)
 
 class Course (Base):
     __tablename__ = "courses"
@@ -24,4 +31,4 @@ class Course (Base):
     name = Column('name', String)
     title = Column('title', String)
     owner_id = Column('owner_id', Integer, ForeignKey(User.id))
-    students = Column('students', ARRAY(Integer))
+    students = Column('students', ARRAY(Integer, ForeignKey(User.id)))
