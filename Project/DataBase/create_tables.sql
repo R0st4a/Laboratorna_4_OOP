@@ -17,4 +17,12 @@ CREATE TABLE Courses (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE Zapitu (
+    id SERIAL NOT NULL,
+    owner_id INT NOT NULL,
+    FOREIGN KEY (owner_id) REFERENCES Users (id),
+    id_course INT NOT NULL,
+    FOREIGN KEY (id_course) REFERENCES Courses (id),
+    PRIMARY KEY (id)
+);
 
