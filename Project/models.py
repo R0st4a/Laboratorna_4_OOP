@@ -1,9 +1,9 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, ARRAY
+from sqlalchemy import create_engine, MetaData, Column, Integer, String, ForeignKey, ARRAY
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from werkzeug.security import generate_password_hash
 
-engine = create_engine("postgresql://postgres:147896325@localhost/lab", echo = True)
+engine = create_engine("postgresql://postgres:postgresqlpass@localhost/online_lec")
 
 Session = sessionmaker(bind=engine)
 
